@@ -15,9 +15,18 @@ const App = () => {
     setTodos([todo, ...todos]);
   };
 
-  useEffect(() => {
+  const addToProgress = (id) => {
+    const item = todos.find(x => x.id === id);
+    setInprogress([item, ...inprogress]);
+    const filterarray = todos.filter(x => x.id !== id);
+    setTodos(filterarray);
+  }
+  const deleteTodo = (id) => {
+    const filterarray = todos.filter(x => x.id !== id);
+    setTodos(filterarray);
+  }
 
-  }, [todos])
+  useEffect(() => {}, [todos, inprogress]);
 
   return (
     <div className="App">
@@ -38,20 +47,28 @@ const App = () => {
         <div className="todos_wrapper">
           <div className="todo_list">
             <h3 className="todo_title">Todo</h3>
-            {todos.map((item, index) =>
+            {todos.map((item, index) => (
               <div className="todo_card" key={item.id}>
-              <p className="card_text">{item.text}</p>
-              <FaCheck className="icon-check-todo" />
-              <FaTrash className="icon-trash-todo" />
-            </div>
-            )}
+                <p className="card_text">{item.text}</p>
+                <FaCheck
+                  onClick={() => addToProgress(item.id)}
+                  className="icon-check-todo"
+                />
+                <FaTrash
+                  onClick={() => deleteTodo(item.id)}
+                  className="icon-trash-todo"
+                />
+              </div>
+            ))}
           </div>
           <div className="todo_list">
             <h3 className="todo_title">Doing</h3>
-            <div className="progress_card">
-              <p className="card_text">some text here</p>
+            {inprogress.map((item, index) =>
+              <div className="progress_card" key={item.key}>
+              <p className="card_text">{item.text}</p>
               <FaCheck className="icon-progress-todo" />
             </div>
+            )}
           </div>
           <div className="todo_list">
             <h3 className="todo_title">Done</h3>
