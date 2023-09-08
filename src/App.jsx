@@ -1,6 +1,6 @@
 
 import './App.css';
-import {FaPlusCircle} from 'react-icons/fa';
+import {FaPlusCircle, FaCheck, FaTrash} from 'react-icons/fa';
 
 const App = () => {
   return (
@@ -14,6 +14,11 @@ const App = () => {
         <div className="todos_wrapper">
           <div className="todo_list">
             <h3 className="todo_title">Todo</h3>
+            <div className="todo_card">
+              <p className="card_text">some text here</p>
+              <FaCheck className="icon-check-todo" />
+              <FaTrash className="icon-trash-todo" />
+            </div>
           </div>
           <div className="todo_list">
             <h3 className="todo_title">Doing</h3>
