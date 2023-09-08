@@ -52,3 +52,32 @@
     background: #fff;
     color: #276c91;
   }
+  .todos_wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  
+  .todo_title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+  }
+  
+  .todo_title::after {
+    content: '';
+    width: 100px;
+    height: 2px;
+    background-color: #fff;
+    display: block;
+    margin: auto;
+  }
+  .todos_list {
+    width: 31%;
+    height: 68vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
